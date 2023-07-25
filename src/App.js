@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import searchBook from "./api/kakaoApi";
+import {useEffect} from 'react';
 
 function App() {
+  const bring = async () => {
+   try {
+    const res = await searchBook('2023 제14회 젊은작가상 수상작품집');
+    if (res.status === 200) {
+      console.log(res);
+    }
+   } catch (err) {
+    console.log('에러', err);
+   }
+  };
+
+  useEffect(()=>{
+    bring();
+  },[]);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div>:)</div>
+    </>
   );
 }
 
