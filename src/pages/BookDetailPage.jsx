@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function MainPage() {
+export default function BookDetailPage() {
     return (
         <div>
-            메인페이지
+            디테일페이지
         </div>
     );
 }
