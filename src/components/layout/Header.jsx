@@ -14,13 +14,14 @@ const Container = styled.section`
     align-items: center;
     width: 100%;
     height: 100px;
-    color: darkblue;
+    color: white;
 `;
 
 const Title = styled.div`
     margin-left: 100px;
     font-size: 40px;
     font-weight: bolder;
+    font-family: 'Edu SA Beginner', cursive;
 `
 
 const S = {
