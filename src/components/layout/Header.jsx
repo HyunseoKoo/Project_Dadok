@@ -14,7 +14,7 @@ const Container = styled.section`
     align-items: center;
     width: 100%;
     height: 100px;
-    color: white;
+    color: darkblue;
 `;
 
 const Title = styled.div`
