@@ -9,10 +9,10 @@ export const KakaoApi = axios.create({
 });
 
 // 2. axios get 함수 만들기
-function searchBook(query) {
+function searchBookApi(query) {
     return KakaoApi.get('/search/book', {
         params: {query: query}
     });
 };
 
-export default searchBook;
+export default searchBookApi;

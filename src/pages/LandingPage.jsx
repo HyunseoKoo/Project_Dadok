@@ -1,7 +1,9 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 export default function LandingPage() {
+    const navigate = useNavigate();
     return (
         <>
             <S.BackgroundImg/>
@@ -9,7 +11,7 @@ export default function LandingPage() {
                 <div>책이 전하는 영감,</div>
                 <div>기록을 통한 성장</div>
                 <div>읽고 기록하는 힘이 훗날 멋진 나를 만들어 줄거에요 :)</div>
-                <S.StartButton>시작하기</S.StartButton>
+                <S.StartButton onClick={()=>navigate('/main')}>시작하기</S.StartButton>
             </S.TextContainer>
         </>
     );
@@ -53,10 +55,10 @@ const StartButton = styled.button`
     border: none;
     border-radius: 10px;
     margin-top: 20px;
-    width: 150px;
-    height: 60px;
+    width: 130px;
+    height: 50px;
     font-family: 'Noto Sans KR', sans-serif;
-    font-size: 20px;
+    font-size: 1rem;
     color: darkblue;
     cursor: pointer;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
