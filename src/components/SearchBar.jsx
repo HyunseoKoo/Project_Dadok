@@ -6,26 +6,21 @@ import searchBookApi from '../api/kakaoApi';
 
 export default function SearchBar() {
     const [title, setTitle] = useState();
-    const [book, setBook] = useState();
+    const [searchedBooks, setSearchedBooks] = useState();
 
-    useEffect(()=> {
-        console.log(book);
-    }, [title])
-
-    const bring = async () => {
+    const onSearchBooks = async (e) => {
+        e.preventDefault();
         try {
-         const res = await searchBookApi('역행자');
+         const res =  await searchBookApi(title);
          if (res.status === 200) {
-           console.log(res);
+           setSearchedBooks(res.data.documents);
          }
         } catch (err) {
          console.log('에러', err);
         }
        };
      
-       useEffect(()=>{
-         bring();
-       },[]);
+    searchedBooks && console.log(searchedBooks[0]); // 확인용
 
     return (
         <>
@@ -36,7 +31,7 @@ export default function SearchBar() {
                     value={title}
                     onChange={(e)=>setTitle(e.target.value)}
                 />
-                <S.Button><FontAwesomeIcon icon={faMagnifyingGlass} /></S.Button>
+                <S.Button onClick={(e)=>onSearchBooks(e)}><FontAwesomeIcon icon={faMagnifyingGlass} /></S.Button>
             </S.FormContainer>
         </>
     );
