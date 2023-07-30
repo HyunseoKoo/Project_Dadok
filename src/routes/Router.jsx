@@ -6,7 +6,7 @@ import LandingPage from '../pages/LandingPage';
 
 export const router = createBrowserRouter([
     {
-        path: '',
+        path: '/',
         element: <LayoutIndex />,
         children: [
             {path: '', element: <LandingPage />},
