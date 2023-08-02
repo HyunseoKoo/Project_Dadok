@@ -22,6 +22,7 @@ const Title = styled.div`
     font-weight: bolder;
     font-family: 'Edu SA Beginner', cursive;
     color: rgb(247, 233, 189);
+    /* color: rgb(232, 187, 11); */
 `
 
 const S = {
