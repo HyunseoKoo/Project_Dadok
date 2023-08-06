@@ -5,7 +5,7 @@ import { router } from './routes/Router';
 function App() {
   return (
     <>
-     ts cra로 개발
+     <div className="text-3xl">ts, tailwind로 개발</div>
      <RouterProvider router={router}/>
     </>
   );
