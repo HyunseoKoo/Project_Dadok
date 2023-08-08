@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Modal from "./components/Modal";
+import SearchBar from "../../components/SearchBar";
 
 export default function MainPage() {
     const [nickName, setNickName] = useState();
@@ -7,10 +8,14 @@ export default function MainPage() {
     return (
         <div>
             {isOpen && <div className="absolute top-0 left-0 w-full h-full backdrop-blur-md">
-              <Modal setIsOpen={setIsOpen}/>
+              <Modal 
+                setIsOpen={setIsOpen}
+                // nickName={nickName}
+                // setNickName={setNickName}
+              />
             </div>}
             <div>메인페이지</div>
-            <div>asdfasfasfasdfsdfsdfsdfa</div>
+            <SearchBar />
         </div>
     );
 }
