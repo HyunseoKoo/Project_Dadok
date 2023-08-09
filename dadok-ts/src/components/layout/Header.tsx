@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 export default function Header() {
     const navigate = useNavigate();
     const nickName = localStorage.getItem('nickName');
-    console.log(nickName); // 확인용
 
     return (
         <header className='flex items-center justify-between w-full h-100px px-[100px] text-blue-950'>

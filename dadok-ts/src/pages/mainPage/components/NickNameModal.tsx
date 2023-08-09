@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Modal({setIsOpen}: { setIsOpen : React.Dispatch<React.SetStateAction<boolean>> }) {
+export default function NickNameModal({setIsOpen}: { setIsOpen : React.Dispatch<React.SetStateAction<boolean>> }) {
     const [nickName, setNickName] = useState('');
     const navigate = useNavigate();
 

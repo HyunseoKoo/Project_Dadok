@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Modal from "./components/Modal";
 import SearchBar from "../../components/SearchBar";
+import NickNameModal from "./components/NickNameModal";
 
 export default function MainPage() {
     const [isOpen, setIsOpen] = useState(true);
@@ -8,11 +8,10 @@ export default function MainPage() {
     return (
         <div>
             {isOpen && <div className="absolute top-0 left-0 w-full h-full backdrop-blur-md">
-              <Modal 
+              <NickNameModal 
                 setIsOpen={setIsOpen}
               />
             </div>}
-            <div>메인페이지</div>
             <SearchBar />
         </div>
     );
