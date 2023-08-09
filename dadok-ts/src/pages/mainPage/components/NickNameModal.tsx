@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function NickNameModal({setIsOpen}: { setIsOpen : React.Dispatch<React.SetStateAction<boolean>> }) {
+export default function NickNameModal({setIsOpenNickNameModal}: { setIsOpenNickNameModal : React.Dispatch<React.SetStateAction<boolean>> }) {
     const [nickName, setNickName] = useState('');
     const navigate = useNavigate();
 
     useEffect(() => {
       if(localStorage.getItem('nickName')) {
-        return setIsOpen(false);
+        return setIsOpenNickNameModal(false);
       }
     }, [])
 
     const onClickOpenState = () => {
-        setIsOpen(false);
+        setIsOpenNickNameModal(false);
         localStorage.setItem("nickName", nickName);
         navigate('/main');
     }

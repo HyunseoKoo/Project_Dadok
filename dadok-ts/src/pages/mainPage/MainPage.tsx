@@ -1,19 +1,26 @@
 import { useState } from "react";
 import SearchBar from "../../components/SearchBar";
 import NickNameModal from "./components/NickNameModal";
+import BookListModal from "./components/BookListModal";
 
 export default function MainPage() {
-    const [isOpen, setIsOpen] = useState(true);
-
+    const [isOpenNickNameModal, setIsOpenNickNameModal] = useState(true);
+    const [isOpenBookListModal, setIsOpenBookListModal] = useState(false);
+    
     return (
-        <div>
-            {isOpen && <div className="absolute top-0 left-0 w-full h-full backdrop-blur-md">
+        <>
+            {isOpenNickNameModal && <div className="absolute top-0 left-0 w-full h-full backdrop-blur-md">
               <NickNameModal 
-                setIsOpen={setIsOpen}
+                setIsOpenNickNameModal={setIsOpenNickNameModal}
               />
             </div>}
             <SearchBar />
-        </div>
+            {isOpenBookListModal && <div className="absolute top-0 left-0 w-full h-full backdrop-blur-md">
+              <BookListModal 
+                setIsOpenBookListModal={setIsOpenBookListModal}
+              />
+            </div>}
+        </>
     );
 }
 

@@ -2,22 +2,17 @@ import { useEffect, useState } from 'react';
 import searchBookApi from '../api/KakaoApi';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
-
+import { useGetSearchBooks } from '../query/get-bookList-query';
 
 export default function SearchBar() {
     const [title, setTitle] = useState('');
     const [searchedBooks, setSearchedBooks] = useState([]);
 
+    const {isLoading, isError, data: searchedBookList} = useGetSearchBooks({title});
+
     const onSearchBooks = async (e: React.MouseEvent<HTMLButtonElement>)=> {
         e.preventDefault();
-        try {
-            const res = await searchBookApi(title);
-            if (res.status === 200) {
-                setSearchedBooks(res.data.documents);
-            }
-        } catch (err) {
-            console.log('에러', err);
-        }
+
     };
 
     // 확인용
