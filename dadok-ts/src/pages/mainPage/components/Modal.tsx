@@ -1,6 +1,24 @@
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 export default function Modal({setIsOpen}: { setIsOpen : React.Dispatch<React.SetStateAction<boolean>> }) {
-    const onChangeOpenState = () => {
+    const [nickName, setNickName] = useState('');
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      if(localStorage.getItem('nickName')) {
+        return setIsOpen(false);
+      }
+    }, [])
+
+    const onClickOpenState = () => {
         setIsOpen(false);
+        localStorage.setItem("nickName", nickName);
+        navigate('/main');
+    }
+
+    const onChangeNickName = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setNickName(e.target.value);
     }
 
     return (
@@ -10,9 +28,11 @@ export default function Modal({setIsOpen}: { setIsOpen : React.Dispatch<React.Se
               alt='nickname'
               placeholder='nick name'
               className='block mx-auto outline-none w-[200px] h-[40px] mt-[20px] pl-[10px] border-solid border-2 border-indigo-600 rounded-[10px]'
+              value={nickName}
+              onChange={onChangeNickName}
             />
             <button
-              onClick={onChangeOpenState}
+              onClick={onClickOpenState}
               className="w-[50px] h-[30px] mt-[15px] bg-indigo-900 text-white rounded-[10px]"
             >확인</button>
         </section>
