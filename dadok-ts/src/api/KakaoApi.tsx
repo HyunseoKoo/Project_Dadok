@@ -7,10 +7,11 @@ export const KakaoApi = axios.create({
     }
 });
 
-function searchBookApi(query: string | undefined) {
-    KakaoApi.get('/search/book', {
-        params: {query: query}
-    }).then((res)=>res.data)
+function searchBookApi(props: string) {
+    return KakaoApi.get('/search/book', {
+        params: {query: props}
+    })
+    .then((res)=>res.data)
 };
 
 export default searchBookApi;
