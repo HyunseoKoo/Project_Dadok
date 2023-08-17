@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
-import { Documents, useGetSearchBooks } from '../query/get-bookList-query';
+import { useGetSearchBooks } from '../query/get-bookList-query';
 
-export default function SearchBar({keyword, setSearchedBooks, setIsOpenBookListModal}:{keyword:React.MutableRefObject<string>; setSearchedBooks: React.Dispatch<React.SetStateAction<Documents[]>>; setIsOpenBookListModal: React.Dispatch<React.SetStateAction<boolean>>}) {
-    const {data: searchedBookList} = useGetSearchBooks(keyword.current);
+export default function SearchBar({keyword, setIsOpenBookListModal}:{keyword:React.MutableRefObject<string>; setIsOpenBookListModal: React.Dispatch<React.SetStateAction<boolean>>}) {
+    useGetSearchBooks(keyword.current)
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>, type: React.MutableRefObject<string>) => {
         const value = e.target.value;
@@ -13,7 +13,6 @@ export default function SearchBar({keyword, setSearchedBooks, setIsOpenBookListM
     const onSearchBooks = async (e: React.MouseEvent<HTMLButtonElement>)=> {
         e.preventDefault();
         try {
-            searchedBookList && setSearchedBooks(searchedBookList?.documents);
             setIsOpenBookListModal(true);
         } catch (err) {
             console.log('에러', err);
