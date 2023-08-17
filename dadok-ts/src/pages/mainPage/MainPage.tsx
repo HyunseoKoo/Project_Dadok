@@ -29,14 +29,16 @@ export default function MainPage() {
               keyword={keyword}
               setIsOpenBookListModal={setIsOpenBookListModal}
             />
-            {searchedBookList && isOpenBookListModal && <div className="absolute top-0 left-0 w-full h-100% backdrop-blur-md backdrop-sepia">
-              <BookListModal 
-                setIsOpenBookListModal={setIsOpenBookListModal}
-              />
-            {searchedBookList && searchedBookList?.documents.map((booklist)=>(
-              <BookCard books={booklist} />
-            ))}
-            </div>}
+            {searchedBookList && isOpenBookListModal && 
+              <div className="absolute top-0 left-0 w-full h-100% backdrop-blur-md backdrop-sepia">
+                {searchedBookList.documents.length > 0 && <BookListModal 
+                  setIsOpenBookListModal={setIsOpenBookListModal}
+                />}
+                {searchedBookList && searchedBookList?.documents.map((booklist)=>(
+                  <BookCard books={booklist} />
+                ))}
+              </div>
+            }
         </>
     );
 }
