@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import searchBookApi from "../api/KakaoApi"
 
-interface Documents {
+export interface Documents {
     authors: string[],
     contents: string,
     datetime: string,

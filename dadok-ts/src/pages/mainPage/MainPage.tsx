@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SearchBar from "../../components/SearchBar";
 import NickNameModal from "./components/NickNameModal";
 import BookListModal from "./components/BookListModal";
+import BookCard from "../../components/BookCard";
+import { Documents, useGetSearchBooks } from "../../query/get-bookList-query";
 
 export default function MainPage() {
     const [isOpenNickNameModal, setIsOpenNickNameModal] = useState(true);
-    const [isOpenBookListModal, setIsOpenBookListModal] = useState(false);
-    
+    const [isOpenBookListModal, setIsOpenBookListModal] = useState(false)
+    const keyword = useRef('');
+    const {data: searchedBookList} = useGetSearchBooks(keyword.current);
+    const [searchedBooks, setSearchedBooks] = useState<Documents[]>([]);
+
+    // 확인용
+    useEffect(()=>{
+      console.log(searchedBooks);
+    }, [searchedBooks])
+
     return (
         <>
             {isOpenNickNameModal && <div className="absolute top-0 left-0 w-full h-full backdrop-blur-md">
@@ -14,11 +24,18 @@ export default function MainPage() {
                 setIsOpenNickNameModal={setIsOpenNickNameModal}
               />
             </div>}
-            <SearchBar />
-            {isOpenBookListModal && <div className="absolute top-0 left-0 w-full h-full backdrop-blur-md">
+            <SearchBar 
+              keyword={keyword}
+              setSearchedBooks={setSearchedBooks}
+              setIsOpenBookListModal={setIsOpenBookListModal}
+            />
+            {isOpenBookListModal && <div className="absolute top-0 left-0 w-full h-100% backdrop-blur-md backdrop-sepia">
               <BookListModal 
                 setIsOpenBookListModal={setIsOpenBookListModal}
               />
+            {searchedBooks && searchedBooks.map((booklist: Documents)=>(
+              <BookCard books={booklist} />
+            ))}
             </div>}
         </>
     );
