@@ -4,6 +4,7 @@ import NickNameModal from "./components/NickNameModal";
 import BookListModal from "./components/BookListModal";
 import BookCard from "../../components/BookCard";
 import { useGetSearchBooks } from "../../query/get-bookList-query";
+import MyBookCard from "../../components/MyBookCard";
 
 let title:string;
 
@@ -39,6 +40,8 @@ export default function MainPage() {
                 ))}
               </div>
             }
+            {/* 확인용 */}
+            <MyBookCard />
         </>
     );
 }

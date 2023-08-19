@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Documents } from "../query/get-bookList-query";
 
 function BookCard ({books}:{books:Documents}) {
     const [listAddModal, setListAddModal] = useState(false);
 
-    useEffect(() => {
-        console.log(listAddModal);
-    }, [setListAddModal])
+    // useEffect(() => {
+    //     console.log(listAddModal);
+    // }, [setListAddModal])
 
     return (
         <section className='mx-auto border-solid border-2 border-indigo-900 bg-[white] rounded-[10px] w-[600px] h-[300px] my-[20px] py-[10px] overflow-hidden'>
